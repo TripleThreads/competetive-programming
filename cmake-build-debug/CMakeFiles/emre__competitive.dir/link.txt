@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o  -o emre__competitive 
