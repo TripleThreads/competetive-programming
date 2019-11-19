@@ -84,7 +84,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/segni/CLionProjects/emre -competitive/day - 1/main.cpp">
+		<Unit filename="/home/segni/CLionProjects/emre -competitive/main.cpp">
 			<Option target="emre__competitive"/>
 		</Unit>
 		<Unit filename="/home/segni/CLionProjects/emre -competitive/CMakeLists.txt">

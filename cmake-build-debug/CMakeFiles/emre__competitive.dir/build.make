@@ -57,27 +57,27 @@ include CMakeFiles/emre__competitive.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/emre__competitive.dir/flags.make
 
-CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o: CMakeFiles/emre__competitive.dir/flags.make
-CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o: ../day\ -\ 1/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/segni/CLionProjects/emre -competitive/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o -c "/home/segni/CLionProjects/emre -competitive/day - 1/main.cpp"
+CMakeFiles/emre__competitive.dir/main.cpp.o: CMakeFiles/emre__competitive.dir/flags.make
+CMakeFiles/emre__competitive.dir/main.cpp.o: ../main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/segni/CLionProjects/emre -competitive/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/emre__competitive.dir/main.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/emre__competitive.dir/main.cpp.o -c "/home/segni/CLionProjects/emre -competitive/main.cpp"
 
-CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/segni/CLionProjects/emre -competitive/day - 1/main.cpp" > CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.i
+CMakeFiles/emre__competitive.dir/main.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/emre__competitive.dir/main.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/segni/CLionProjects/emre -competitive/main.cpp" > CMakeFiles/emre__competitive.dir/main.cpp.i
 
-CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/segni/CLionProjects/emre -competitive/day - 1/main.cpp" -o CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.s
+CMakeFiles/emre__competitive.dir/main.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/emre__competitive.dir/main.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/segni/CLionProjects/emre -competitive/main.cpp" -o CMakeFiles/emre__competitive.dir/main.cpp.s
 
 # Object files for target emre__competitive
 emre__competitive_OBJECTS = \
-"CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o"
+"CMakeFiles/emre__competitive.dir/main.cpp.o"
 
 # External object files for target emre__competitive
 emre__competitive_EXTERNAL_OBJECTS =
 
-emre__competitive: CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o
+emre__competitive: CMakeFiles/emre__competitive.dir/main.cpp.o
 emre__competitive: CMakeFiles/emre__competitive.dir/build.make
 emre__competitive: CMakeFiles/emre__competitive.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/segni/CLionProjects/emre -competitive/cmake-build-debug/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable emre__competitive"

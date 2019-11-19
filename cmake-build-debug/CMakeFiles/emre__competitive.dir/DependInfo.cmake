@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/segni/CLionProjects/emre -competitive/day - 1/main.cpp" "/home/segni/CLionProjects/emre -competitive/cmake-build-debug/CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o"
+  "/home/segni/CLionProjects/emre -competitive/main.cpp" "/home/segni/CLionProjects/emre -competitive/cmake-build-debug/CMakeFiles/emre__competitive.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

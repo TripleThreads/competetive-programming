@@ -3,15 +3,15 @@
 
 using namespace std;
 
-vector<int> add(const string &num_1, const string &num_2, int _max) {
+vector<int> add(const string &num_1, const string &num_2) {
 
     vector<int> total;
 
     int carry_on = 0;
 
-    for (int index = _max - 1; index >= 0; index--) {
+    for (int index = num_1.length() - 1; index >= 0; index--) {
 
-        int x = num_1.at(index) - 48;
+        int x = num_1.at(index) - 48; // 48 is ascii value of '0'
         int y = num_2.at(index) - 48;
 
         int z = x + y + carry_on;
@@ -30,13 +30,14 @@ vector<int> add(const string &num_1, const string &num_2, int _max) {
     return total;
 }
 
-vector<int> subs(const string &num_1, const string &num_2, int _max) {
+// if one the user input is negative we will subtract
+vector<int> subs(const string &num_1, const string &num_2) {
 
     vector<int> total;
 
     int carry_on = 0;
 
-    for (int index = _max - 1; index >= 0; index--) {
+    for (int index = num_1.length() - 1; index >= 0; index--) {
 
         int x = num_1.at(index) - 48;
         int y = num_2.at(index) - 48;
@@ -68,19 +69,36 @@ vector<int> subs(const string &num_1, const string &num_2, int _max) {
     }
     return total;
 }
+// check number and num_1 is less than num_2 swap for subtraction
+bool check_swap(string &num_1, string &num_2, int negative_index) {
+
+    for (int index = 0; index < num_1.length(); index++) {
+
+        int x = num_1.at(index) - 48;
+        int y = num_2.at(index) - 48;
+
+        if (x > y) return negative_index == 1;
+
+        if (x < y) {
+            swap(num_1, num_2);
+
+            return negative_index == 2;
+        }
+
+    }
+    return false;
+}
 
 void sum() {
 
-    string num_1;
-    string num_2;
-    string cpy;
-
+    string num_1, num_2, cpy;
 
     cin >> num_1 >> num_2;
 
     bool both_negative = false;
-    bool one_negative = false;
+    bool single_negative = false;
     bool print_negative = false;
+    int negative_index = 0;
 
     if (num_1.at(0) == '-' && num_2.at(0) == '-') {
 
@@ -91,15 +109,17 @@ void sum() {
 
     } else if (num_1.at(0) == '-' || num_2.at(0) == '-') {
 
-        one_negative = true;
+        single_negative = true;
 
         if (num_1.at(0) == '-') {
 
             num_1 = num_1.substr(1, num_1.length());
+            negative_index = 1;
 
         } else if (num_2.at(0) == '-') {
 
             num_2 = num_2.substr(1, num_2.length());
+            negative_index = 2;
 
         }
     }
@@ -118,26 +138,22 @@ void sum() {
     } else {
         cpy.append(num_1);
         num_1 = cpy;
-        swap(num_1, num_2);
-        print_negative = true;
     }
 
     vector<int> total;
 
-    if (both_negative || !one_negative) {
-        total = add(num_1, num_2, _max);
-    } else if (one_negative) {
-        if (num_1.length() == num_2.length()) {
-            if (num_1.at(0) < num_2.at(0)) {
-                swap(num_1, num_2);
-                print_negative = true;
-            }
-        }
+    if (both_negative || !single_negative) {
 
-        total = subs(num_1, num_2, _max);
+        total = add(num_1, num_2);
+
+    } else if (single_negative) {
+
+        print_negative = check_swap(num_1, num_2, negative_index);
+
+        total = subs(num_1, num_2);
     }
 
-    if (both_negative || one_negative) {
+    if (both_negative || print_negative) {
         cout << "-";
     }
 
@@ -145,9 +161,4 @@ void sum() {
         cout << i;
     }
     cout << endl;
-}
-
-int main() {
-    sum();
-    return 0;
 }

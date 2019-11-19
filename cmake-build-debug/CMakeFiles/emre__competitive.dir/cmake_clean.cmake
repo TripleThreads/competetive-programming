@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o"
+  "CMakeFiles/emre__competitive.dir/main.cpp.o"
   "emre__competitive"
   "emre__competitive.pdb"
 )

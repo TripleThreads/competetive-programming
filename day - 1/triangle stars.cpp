@@ -1,26 +1,22 @@
 //
 // Created by segni on 19/11/2019.
 //
+#include <iostream>
 
-void loops() {
+using namespace std;
+
+/**
+ * the following function will print an isoceles right angle triangle
+ * */
+void isoceles() {
 
     int n;
     cout << "Enter a number: ";
     cin >> n;
 
-    for (int i = 0; i <= n; i++) {
-
-        for (int a = 0; a < n - i; a++) {
-            cout << "";
-        }
+    for (int i = 0; i < n; i++) {
 
         for (int j = 0; j <= i; j++) {
-
-            cout << "*";
-
-        }
-
-        for (int j = i; j > 0; j--) {
 
             cout << "*";
 
@@ -29,6 +25,7 @@ void loops() {
         cout << endl;
     }
 }
+
 
 void printSpaces(int row_size, int row) {
 
@@ -40,14 +37,9 @@ void printSpaces(int row_size, int row) {
 
 void printStars(int row) {
 
-    for (int j = 0; j <= row; j++) {
+    int stars_num = 2 * row + 1;
 
-        cout << "*";
-
-    }
-
-
-    for (int j = row; j > 0; j--) {
+    for (int j = 0; j < stars_num; j++) {
 
         cout << "*";
 
@@ -55,6 +47,7 @@ void printStars(int row) {
 }
 
 void loopsRefactored() {
+
     int row_size;
     cout << "Enter a number: ";
     cin >> row_size;

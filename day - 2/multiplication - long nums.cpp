@@ -1,52 +1,67 @@
 #include <iostream>
 #include <bits/stdc++.h>
+#include <algorithm>
+
+/**
+ * @user segni
+ * multiply large numbers
+ * */
 
 using namespace std;
 
-vector<int> multiply(const string &num_1, const string &num_2, int _max) {
+vector<string> multiply(const string &num_1, const string &num_2) {
 
-    vector<int> total;
+    vector<string> total;
 
     int carry_on = 0;
 
-    for (int index = _max - 1; index >= 0; index--) {
+    for (int index_num = num_1.length() - 1; index_num >= 0; index_num--) {
 
-        int x = num_1.at(index) - 48;
-        int y = num_2.at(index) - 48;
+        int x = num_1.at(index_num) - 48;
 
-        int z = x + y + carry_on;
+        vector<long long int> temp;
 
-        if (index == 0) {
+        for (int index = num_2.length() - 1; index >= 0; index--) {
 
-            total.insert(total.begin(), 1, z);
+            int y = num_2.at(index) - 48;
 
-        } else {
-            total.insert(total.begin(), 1, z % 10);
+            int z = x * y + carry_on;
+
+            if (index_num == 0) {
+
+                temp.insert(temp.begin(), 1, z);
+
+            } else {
+                temp.insert(temp.begin(), 1, z % 10);
+            }
+
+            carry_on = z / 10;
         }
 
-        carry_on = z / 10;
+        string padding = "0";
 
+        for (long long int i: temp) {
+            padding = to_string(stoll(padding) * 10 + i);
+        }
+
+        for (int a = 0; a < num_1.length() - index_num - 1; a++) {
+            padding.append("0");
+        }
+
+        total.insert(total.begin(), 1, padding);
     }
     return total;
 }
 
-
 void input() {
 
-    string num_1;
-    string num_2;
-    string cpy;
-
+    string num_1, num_2;
 
     cin >> num_1 >> num_2;
 
-    bool both_negative = false;
     bool one_negative = false;
-    bool print_negative = false;
 
     if (num_1.at(0) == '-' && num_2.at(0) == '-') {
-
-        both_negative = true;
 
         num_1 = num_1.substr(1, num_1.length());
         num_2 = num_2.substr(1, num_2.length());
@@ -66,26 +81,45 @@ void input() {
         }
     }
 
+    vector<string> total;
 
-    int _min = min(num_1.length(), num_2.length());
-    int _max = max(num_1.length(), num_2.length());
-
-    vector<int> total;
-
-    total = add(num_1, num_2, _max);
-
+    total = multiply(num_2, num_1);
 
     if (one_negative) {
         cout << "-";
     }
 
-    for (int i : total) {
-        cout << i;
-    }
-    cout << endl;
-}
+    string final = "0";
 
-int main() {
-    input();
-    return 0;
+    string copy;
+
+    for (string i : total) {
+
+        int _min = min(i.length(), final.length());
+        int _max = max(i.length(), final.length());
+
+        for (int times = 0; times < _max - _min; times++) {
+            copy.append("0");
+        }
+
+        if (i.length() >= final.length()) {
+            copy.append(final);
+            final = copy;
+        } else {
+            copy.append(i);
+            i = copy;
+        }
+
+        vector<int> _sum = add(i, final);
+
+        string result;
+
+        for (int a : _sum) {
+            result.append(to_string(a));
+        }
+        final = result;
+
+        copy = "";
+    }
+    cout << final << endl;
 }

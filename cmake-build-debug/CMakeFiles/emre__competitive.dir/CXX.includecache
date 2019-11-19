@@ -6,9 +6,29 @@
 
 #IncludeRegexTransform: 
 
-/home/segni/CLionProjects/emre -competitive/day - 1/main.cpp
+/home/segni/CLionProjects/emre -competitive/day - 1/add long nums.cpp
 iostream
 -
 bits/stdc++.h
 -
+
+/home/segni/CLionProjects/emre -competitive/day - 1/triangle stars.cpp
+iostream
+-
+
+/home/segni/CLionProjects/emre -competitive/day - 2/multiplication - long nums.cpp
+iostream
+-
+bits/stdc++.h
+-
+algorithm
+-
+
+/home/segni/CLionProjects/emre -competitive/main.cpp
+day - 1/triangle stars.cpp
+/home/segni/CLionProjects/emre -competitive/day - 1/triangle stars.cpp
+day - 1/add long nums.cpp
+/home/segni/CLionProjects/emre -competitive/day - 1/add long nums.cpp
+day - 2/multiplication - long nums.cpp
+/home/segni/CLionProjects/emre -competitive/day - 2/multiplication - long nums.cpp
 

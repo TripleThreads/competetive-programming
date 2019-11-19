@@ -3,4 +3,4 @@ project(emre__competitive)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(emre__competitive "day - 2/multiplication - long nums.cpp")
+add_executable(emre__competitive main.cpp)

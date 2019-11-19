@@ -123,32 +123,32 @@ emre__competitive/fast:
 	$(MAKE) -f CMakeFiles/emre__competitive.dir/build.make CMakeFiles/emre__competitive.dir/build
 .PHONY : emre__competitive/fast
 
-day_-_1/main.o: day_-_1/main.cpp.o
+main.o: main.cpp.o
 
-.PHONY : day_-_1/main.o
+.PHONY : main.o
 
 # target to build an object file
-day_-_1/main.cpp.o:
-	$(MAKE) -f CMakeFiles/emre__competitive.dir/build.make CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.o
-.PHONY : day_-_1/main.cpp.o
+main.cpp.o:
+	$(MAKE) -f CMakeFiles/emre__competitive.dir/build.make CMakeFiles/emre__competitive.dir/main.cpp.o
+.PHONY : main.cpp.o
 
-day_-_1/main.i: day_-_1/main.cpp.i
+main.i: main.cpp.i
 
-.PHONY : day_-_1/main.i
+.PHONY : main.i
 
 # target to preprocess a source file
-day_-_1/main.cpp.i:
-	$(MAKE) -f CMakeFiles/emre__competitive.dir/build.make CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.i
-.PHONY : day_-_1/main.cpp.i
+main.cpp.i:
+	$(MAKE) -f CMakeFiles/emre__competitive.dir/build.make CMakeFiles/emre__competitive.dir/main.cpp.i
+.PHONY : main.cpp.i
 
-day_-_1/main.s: day_-_1/main.cpp.s
+main.s: main.cpp.s
 
-.PHONY : day_-_1/main.s
+.PHONY : main.s
 
 # target to generate assembly for a file
-day_-_1/main.cpp.s:
-	$(MAKE) -f CMakeFiles/emre__competitive.dir/build.make CMakeFiles/emre__competitive.dir/day_-_1/main.cpp.s
-.PHONY : day_-_1/main.cpp.s
+main.cpp.s:
+	$(MAKE) -f CMakeFiles/emre__competitive.dir/build.make CMakeFiles/emre__competitive.dir/main.cpp.s
+.PHONY : main.cpp.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... emre__competitive"
 	@echo "... edit_cache"
-	@echo "... day_-_1/main.o"
-	@echo "... day_-_1/main.i"
-	@echo "... day_-_1/main.s"
+	@echo "... main.o"
+	@echo "... main.i"
+	@echo "... main.s"
 .PHONY : help
 
 
