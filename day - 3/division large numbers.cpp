@@ -1,12 +1,11 @@
 //
 // Created by segni on 20/11/2019.
 //
-
 #include <iostream>
 #include <vector>
 
 using namespace std;
-
+// this function is a utility function that helps us to check if the string is zero ex. 000000 true 0001 is true
 bool is_zero(string &num_1) {
     for (char chr: num_1) {
         if (chr != '0')
@@ -14,7 +13,6 @@ bool is_zero(string &num_1) {
     }
     return true;
 }
-
 unsigned long long int get_inc_by(string &num_1, string &num_2) {
 
     int len_diff = num_1.length() - num_2.length();
@@ -26,7 +24,6 @@ unsigned long long int get_inc_by(string &num_1, string &num_2) {
     }
     return len_diff - 1 > 0 ? pow(ten, len_diff - 1) : 1;
 }
-
 // we are not really gonna divide num_1 by num_2 rather we subtract num_2 from num_1 until it is less than num_2
 unsigned long long int divide(string &num_1, string &num_2) {
 
@@ -82,20 +79,15 @@ unsigned long long int divide(string &num_1, string &num_2) {
     return quotient;
 }
 
-void division() {
-
-    string num_1, num_2;
-
-    cin >> num_1 >> num_2;
+void division_input(string num_1, string num_2) {
 
     bool print_negative = false;
 
-    if (num_1.at(0) == '-') {
+    if (num_1.at(0) == '-') { // check if negative should be displayed or not
 
         print_negative = !print_negative;
 
         num_1 = num_1.substr(1, num_1.length());
-
     }
     if (num_2.at(0) == '-') {
 
@@ -118,11 +110,8 @@ void division() {
 
         decimal.append(to_string(divide(num_1.append("0"), num_2)));
     }
-
     if (print_negative) {
         cout << "-";
     }
     cout << inc << "." << (!decimal.empty() ? decimal : "0") << endl;
-
-    cout << endl;
 }

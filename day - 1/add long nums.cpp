@@ -54,23 +54,15 @@ vector<int> subs(const string &num_1, const string &num_2) {
         x -= carry_on;
 
         if (x < y) {
-
             x += 10;
-
             carry_on = 1;
-
         } else {
-
             carry_on = 0;
-
         }
-
         int z = x - y;
 
         if (index == 0 && z == 0) {
-
             continue;
-
         } else {
             total.push_back(z);
         }
@@ -108,11 +100,7 @@ bool check_swap(string &num_1, string &num_2, int negative_index = 0) {
     return false;
 }
 
-void sum() {
-
-    string num_1, num_2;
-
-    cin >> num_1 >> num_2;
+void sum_input(string num_1, string num_2) {
 
     bool both_negative = false;
     bool single_negative = false;
@@ -142,7 +130,6 @@ void sum() {
 
         }
     }
-
     vector<int> total;
 
     print_negative = check_swap(num_1, num_2, negative_index);
@@ -156,13 +143,13 @@ void sum() {
         total = subs(num_1, num_2);
 
     }
-
     if (both_negative || print_negative) {
         cout << "-";
     }
-
     for (int i : total) {
         cout << i;
     }
+    if (total.empty())
+        cout << 0;
     cout << endl;
 }

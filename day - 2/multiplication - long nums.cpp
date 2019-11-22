@@ -37,7 +37,6 @@ vector<string> multiply(const string &num_1, const string &num_2) {
 
             carry_on = z / 10;
         }
-
         string padding;
 
         for (long long int i = temp.size(); i >= 0; i--) {
@@ -46,27 +45,19 @@ vector<string> multiply(const string &num_1, const string &num_2) {
 
             padding.append(to_string(temp[i]));
         }
-
         for (int a = 0; a < num_1.length() - index_num - 1; a++) {
             padding.append("0");
         }
-
         total.insert(total.begin(), 1, padding);
     }
     return total;
 }
-
 /**
  * @method input takes input from user and polishes it
  * */
-void input() {
-
-    string num_1, num_2;
-
-    cin >> num_1 >> num_2;
+void mul_input(string num_1, string num_2) {
 
     bool print_negative = false;
-
 
     if (num_1.at(0) == '-') {
 
@@ -82,9 +73,7 @@ void input() {
         num_2 = num_2.substr(1, num_2.length());
     }
 
-    vector<string> total;
-
-    total = multiply(num_2, num_1);
+    vector<string> total = multiply(num_2, num_1);
 
     string final = "0";
 
@@ -102,7 +91,6 @@ void input() {
         final = result;
 
     }
-
     if (print_negative && final != "0") {
         cout << "-";
     }

@@ -8,79 +8,39 @@ using namespace std;
 void calculator() {
 
     string user_input, num_1, num_2;
-
-    int op = 0;
+    cout << "Please enter your operation > ";
 
     cin >> user_input;
 
-    int minus_op = user_input.find('-');
+    int minus_op = user_input.find_last_of('-');
     int plus_op = user_input.find('+');
     int div_op = user_input.find('/');
     int multi_op = user_input.find('*');
 
-    if (minus_op != -1 && minus_op != 0) {
-        num_1 = user_input.substr(0, minus_op);
-        num_2 = user_input.substr(minus_op + 1, user_input.length());
-        op = 1;
-    } else if (plus_op != -1) {
-        num_1 = user_input.substr(0, minus_op);
-        num_2 = user_input.substr(minus_op + 1, user_input.length());
-        op = 2;
+    if (multi_op != -1) {
+        num_1 = user_input.substr(0, multi_op);
+        num_2 = user_input.substr(multi_op + 1, user_input.length());
+
+        mul_input(num_1, num_2);
     } else if (div_op != -1) {
+        num_1 = user_input.substr(0, div_op);
+        num_2 = user_input.substr(div_op + 1, user_input.length());
+        division_input(num_1, num_2);
+
+    } else if (plus_op != -1) {
+        num_1 = user_input.substr(0, plus_op);
+        num_2 = user_input.substr(plus_op + 1, user_input.length());
+        sum_input(num_1, num_2);
+
+    } else if (minus_op != -1 && minus_op != 0) {
         num_1 = user_input.substr(0, minus_op);
-        num_2 = user_input.substr(minus_op + 1, user_input.length());
-        op = 3;
-    } else if (multi_op != -1) {
-        num_1 = user_input.substr(0, minus_op);
-        num_2 = user_input.substr(minus_op + 1, user_input.length());
-        op = 4;
-    }
+        num_2 = user_input.substr(minus_op, user_input.length());
 
-
-    bool both_negative = false;
-    bool print_negative;
-
-    int negative_index = 0;
-
-    if (num_1.at(0) == '-' && num_2.at(0) == '-') {
-
-        both_negative = true;
-
-        num_1 = num_1.substr(1, num_1.length());
-        num_2 = num_2.substr(1, num_2.length());
-
-    } else if (num_1.at(0) == '-' || num_2.at(0) == '-') {
-
-        if (num_1.at(0) == '-') {
-
-            num_1 = num_1.substr(1, num_1.length());
-            negative_index = 1;
-
-        } else if (num_2.at(0) == '-') {
-
+        // there might be x--y i.e. x+y so we handle that here
+        if (user_input.at(minus_op - 1) == '-') {
+            num_1 = num_1.substr(0, num_1.length() - 1);
             num_2 = num_2.substr(1, num_2.length());
-            negative_index = 2;
         }
+        sum_input(num_1, num_2);
     }
-
-    print_negative = check_swap(num_1, num_2, negative_index);
-
-    // since we want to 3 decimal points let's do that way
-    int inc = divide(num_1, num_2);
-
-    string decimal;
-
-    for (int i = 0; i < 3; i++) {
-
-        if (num_1.empty()) break;
-
-        decimal.append(to_string(divide(num_1.append("0"), num_2)));
-    }
-
-    if (print_negative) {
-        cout << "-";
-    }
-    cout << "result " << inc << "." << decimal << endl;
-
-    cout << endl;
 }

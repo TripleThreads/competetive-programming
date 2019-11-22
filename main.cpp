@@ -10,6 +10,6 @@
 using namespace std;
 
 int main () {
-    division();
+    calculator();
     return 0;
 }
