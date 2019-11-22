@@ -5,7 +5,7 @@
 #include <vector>
 
 using namespace std;
-// this function is a utility function that helps us to check if the string is zero ex. 000000 true 0001 is true
+// this function is a utility function that helps us to check if the string is zero ex. returns true for 0000 and  false if 0001
 bool is_zero(string &num_1) {
     for (char chr: num_1) {
         if (chr != '0')
@@ -13,6 +13,7 @@ bool is_zero(string &num_1) {
     }
     return true;
 }
+// this function returns increment size that is used to update quotient and appends 0's to denominator for fast division
 unsigned long long int get_inc_by(string &num_1, string &num_2) {
 
     int len_diff = num_1.length() - num_2.length();
@@ -59,7 +60,6 @@ unsigned long long int divide(string &num_1, string &num_2) {
             num_1 = "";
             break;
         }
-
         check_swap(num_1, num_2);
 
         // check if the numerator is less than denominator
