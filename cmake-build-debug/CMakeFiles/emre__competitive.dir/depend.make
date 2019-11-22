@@ -4,5 +4,7 @@
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 1/add\ long\ nums.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 1/triangle\ stars.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 2/multiplication\ -\ long\ nums.cpp
+CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 3/calculator.cpp
+CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 3/division\ large\ numbers.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../main.cpp
 

@@ -2,8 +2,12 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-
+/**
+ * @method add takes two string numbers and add them returns vector<int>
+ * */
 vector<int> add(const string &num_1, const string &num_2) {
+
+    int num_2_index = num_2.length() - 1;
 
     vector<int> total;
 
@@ -12,21 +16,24 @@ vector<int> add(const string &num_1, const string &num_2) {
     for (int index = num_1.length() - 1; index >= 0; index--) {
 
         int x = num_1.at(index) - 48; // 48 is ascii value of '0'
-        int y = num_2.at(index) - 48;
+
+        int y = (num_2_index >= 0) ? num_2.at(num_2_index--) - 48 : 0;
 
         int z = x + y + carry_on;
 
         if (index == 0) {
 
-            total.insert(total.begin(), 1, z);
+            total.push_back(z);
 
         } else {
-            total.insert(total.begin(), 1, z % 10);
+            total.push_back(z % 10);
         }
 
         carry_on = z / 10;
 
     }
+    reverse(total.begin(), total.end());
+
     return total;
 }
 
@@ -35,12 +42,14 @@ vector<int> subs(const string &num_1, const string &num_2) {
 
     vector<int> total;
 
+    int num_2_index = num_2.length() - 1;
+
     int carry_on = 0;
 
     for (int index = num_1.length() - 1; index >= 0; index--) {
 
         int x = num_1.at(index) - 48;
-        int y = num_2.at(index) - 48;
+        int y = (num_2_index >= 0) ? num_2.at(num_2_index--) - 48 : 0;
 
         x -= carry_on;
 
@@ -63,14 +72,24 @@ vector<int> subs(const string &num_1, const string &num_2) {
             continue;
 
         } else {
-            total.insert(total.begin(), 1, z);
+            total.push_back(z);
         }
 
     }
+    reverse(total.begin(), total.end());
+
     return total;
 }
 // check number and num_1 is less than num_2 swap for subtraction
-bool check_swap(string &num_1, string &num_2, int negative_index) {
+bool check_swap(string &num_1, string &num_2, int negative_index = 0) {
+
+    if (num_1.length() > num_2.length()) return negative_index == 1;
+
+    if (num_2.length() > num_1.length()) {
+        swap(num_1, num_2);
+        return negative_index == 2;
+    }
+
 
     for (int index = 0; index < num_1.length(); index++) {
 
@@ -91,13 +110,13 @@ bool check_swap(string &num_1, string &num_2, int negative_index) {
 
 void sum() {
 
-    string num_1, num_2, cpy;
+    string num_1, num_2;
 
     cin >> num_1 >> num_2;
 
     bool both_negative = false;
     bool single_negative = false;
-    bool print_negative = false;
+    bool print_negative;
     int negative_index = 0;
 
     if (num_1.at(0) == '-' && num_2.at(0) == '-') {
@@ -124,23 +143,9 @@ void sum() {
         }
     }
 
-
-    int _min = min(num_1.length(), num_2.length());
-    int _max = max(num_1.length(), num_2.length());
-
-    for (int times = 0; times < _max - _min; times++) {
-        cpy.append("0");
-    }
-
-    if (num_1.length() >= num_2.length()) {
-        cpy.append(num_2);
-        num_2 = cpy;
-    } else {
-        cpy.append(num_1);
-        num_1 = cpy;
-    }
-
     vector<int> total;
+
+    print_negative = check_swap(num_1, num_2, negative_index);
 
     if (both_negative || !single_negative) {
 
@@ -148,9 +153,8 @@ void sum() {
 
     } else if (single_negative) {
 
-        print_negative = check_swap(num_1, num_2, negative_index);
-
         total = subs(num_1, num_2);
+
     }
 
     if (both_negative || print_negative) {

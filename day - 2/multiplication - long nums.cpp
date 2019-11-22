@@ -1,14 +1,14 @@
 #include <iostream>
-#include <bits/stdc++.h>
-#include <algorithm>
-
 /**
  * @user segni
- * multiply large numbers
+ * multiply large numbers this multiply reuse the add function from day 1
  * */
 
 using namespace std;
 
+/**
+ * @method multiply takes two numbers and multiply them returns in vector<string>
+ * */
 vector<string> multiply(const string &num_1, const string &num_2) {
 
     vector<string> total;
@@ -19,7 +19,7 @@ vector<string> multiply(const string &num_1, const string &num_2) {
 
         int x = num_1.at(index_num) - 48;
 
-        vector<long long int> temp;
+        vector<int> temp;
 
         for (int index = num_2.length() - 1; index >= 0; index--) {
 
@@ -29,19 +29,22 @@ vector<string> multiply(const string &num_1, const string &num_2) {
 
             if (index_num == 0) {
 
-                temp.insert(temp.begin(), 1, z);
+                temp.push_back(z);
 
             } else {
-                temp.insert(temp.begin(), 1, z % 10);
+                temp.push_back(z % 10);
             }
 
             carry_on = z / 10;
         }
 
-        string padding = "0";
+        string padding;
 
-        for (long long int i: temp) {
-            padding = to_string(stoll(padding) * 10 + i);
+        for (long long int i = temp.size(); i >= 0; i--) {
+
+            if (padding.empty() && temp[i] == 0) continue;
+
+            padding.append(to_string(temp[i]));
         }
 
         for (int a = 0; a < num_1.length() - index_num - 1; a++) {
@@ -53,62 +56,41 @@ vector<string> multiply(const string &num_1, const string &num_2) {
     return total;
 }
 
+/**
+ * @method input takes input from user and polishes it
+ * */
 void input() {
 
     string num_1, num_2;
 
     cin >> num_1 >> num_2;
 
-    bool one_negative = false;
+    bool print_negative = false;
 
-    if (num_1.at(0) == '-' && num_2.at(0) == '-') {
+
+    if (num_1.at(0) == '-') {
+
+        print_negative = !print_negative;
 
         num_1 = num_1.substr(1, num_1.length());
+
+    }
+    if (num_2.at(0) == '-') {
+
+        print_negative = !print_negative;
+
         num_2 = num_2.substr(1, num_2.length());
-
-    } else if (num_1.at(0) == '-' || num_2.at(0) == '-') {
-
-        one_negative = true;
-
-        if (num_1.at(0) == '-') {
-
-            num_1 = num_1.substr(1, num_1.length());
-
-        } else if (num_2.at(0) == '-') {
-
-            num_2 = num_2.substr(1, num_2.length());
-
-        }
     }
 
     vector<string> total;
 
     total = multiply(num_2, num_1);
 
-    if (one_negative) {
-        cout << "-";
-    }
-
     string final = "0";
-
-    string copy;
 
     for (string i : total) {
 
-        int _min = min(i.length(), final.length());
-        int _max = max(i.length(), final.length());
-
-        for (int times = 0; times < _max - _min; times++) {
-            copy.append("0");
-        }
-
-        if (i.length() >= final.length()) {
-            copy.append(final);
-            final = copy;
-        } else {
-            copy.append(i);
-            i = copy;
-        }
+        check_swap(i, final, 0);
 
         vector<int> _sum = add(i, final);
 
@@ -119,7 +101,10 @@ void input() {
         }
         final = result;
 
-        copy = "";
+    }
+
+    if (print_negative && final != "0") {
+        cout << "-";
     }
     cout << final << endl;
 }
