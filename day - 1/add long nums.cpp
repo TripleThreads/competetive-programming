@@ -75,6 +75,8 @@ vector<int> subs(const string &num_1, const string &num_2) {
 // check number and num_1 is less than num_2 swap for subtraction
 bool check_swap(string &num_1, string &num_2, int negative_index = 0) {
 
+    if (num_1 == num_2) return negative_index == 0;
+
     if (num_1.length() > num_2.length()) return negative_index == 1;
 
     if (num_2.length() > num_1.length()) {

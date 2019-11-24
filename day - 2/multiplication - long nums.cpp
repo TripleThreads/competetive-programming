@@ -1,10 +1,48 @@
-#include <iostream>
 /**
  * @user segni
  * multiply large numbers this multiply reuse the add function from day 1
  * */
 
+#include <iostream>
+#include <map>
+
 using namespace std;
+
+vector<int> add_mul(const vector<int>& num_1, const string &num_2) {
+
+    int max_iter = max(num_1.size(), num_2.length());
+
+    int num_1_index = num_1.size() - 1;
+
+    int num_2_index = num_2.length() - 1;
+
+    vector<int> total;
+
+    int carry_on = 0;
+
+    for (int index = max_iter - 1; index >= 0; index--) {
+
+        int x = (num_1_index >= 0) ? num_1[num_1_index--] : 0;
+
+        int y = (num_2_index >= 0) ? num_2.at(num_2_index--) - 48 : 0;
+
+        int z = x + y + carry_on;
+
+        if (index == 0) {
+
+            total.push_back(z);
+
+        } else {
+            total.push_back(z % 10);
+        }
+
+        carry_on = z / 10;
+
+    }
+    reverse(total.begin(), total.end());
+
+    return total;
+}
 
 /**
  * @method multiply takes two numbers and multiply them returns in vector<string>
@@ -12,46 +50,62 @@ using namespace std;
 vector<string> multiply(const string &num_1, const string &num_2) {
 
     vector<string> total;
-
+    map<string, string> mul_table;
     int carry_on = 0;
 
     for (int index_num = num_1.length() - 1; index_num >= 0; index_num--) {
-
         int x = num_1.at(index_num) - 48;
 
-        vector<int> temp;
+        if (x == 0) continue;
 
-        for (int index = num_2.length() - 1; index >= 0; index--) {
-
-            int y = num_2.at(index) - 48;
-
-            int z = x * y + carry_on;
-
-            if (index_num == 0) {
-
-                temp.push_back(z);
-
-            } else {
-                temp.push_back(z % 10);
-            }
-
-            carry_on = z / 10;
-        }
         string padding;
+        string num2_cpy = num_2;
 
-        for (long long int i = temp.size(); i >= 0; i--) {
+        num2_cpy.append(to_string(x));
 
-            if (padding.empty() && temp[i] == 0) continue;
+        if (mul_table.find(num2_cpy) == mul_table.end()) {
 
-            padding.append(to_string(temp[i]));
+            vector<int> temp;
+
+            for (int index = num_2.length() - 1; index >= 0; index--) {
+
+                int y = num_2.at(index) - 48;
+
+                int z = x * y + carry_on;
+
+                if (index_num == 0) {
+
+                    temp.push_back(z);
+
+                } else {
+                    temp.push_back(z % 10);
+                }
+
+                carry_on = z / 10;
+            }
+            for (long long int i = temp.size(); i >= 0; i--) {
+
+                if (padding.empty() && temp[i] == 0) continue;
+
+                padding.append(to_string(temp[i]));
+            }
+            mul_table[num2_cpy] = padding;
+
+            for (int a = 0; a < num_1.length() - index_num - 1; a++) {
+                padding.append("0");
+            }
+        } else {
+            padding = mul_table[num2_cpy];
+            for (int a = 0; a < num_1.length() - index_num - 1; a++) {
+                padding.append("0");
+            }
         }
-        for (int a = 0; a < num_1.length() - index_num - 1; a++) {
-            padding.append("0");
-        }
-        total.insert(total.begin(), 1, padding);
+        total.push_back(padding);
     }
+
     return total;
 }
+
 /**
  * @method input takes input from user and polishes it
  * */
@@ -75,24 +129,18 @@ void mul_input(string num_1, string num_2) {
 
     vector<string> total = multiply(num_2, num_1);
 
-    string final = "0";
+    vector<int> final = {0};
 
-    for (string i : total) {
+    for (const string &num: total) {
 
-        check_swap(i, final, 0);
-
-        vector<int> _sum = add(i, final);
-
-        string result;
-
-        for (int a : _sum) {
-            result.append(to_string(a));
-        }
-        final = result;
+        final = add_mul(final, num);
 
     }
-    if (print_negative && final != "0") {
+    if (print_negative && final.at(0) != 0) {
         cout << "-";
     }
-    cout << final << endl;
+
+    for (int f: final)
+        cout << f;
+    cout << endl;
 }

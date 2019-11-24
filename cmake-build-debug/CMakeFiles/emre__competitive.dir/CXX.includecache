@@ -19,6 +19,8 @@ iostream
 /home/segni/CLionProjects/emre -competitive/day - 2/multiplication - long nums.cpp
 iostream
 -
+map
+-
 
 /home/segni/CLionProjects/emre -competitive/day - 3/calculator.cpp
 iostream
@@ -30,15 +32,29 @@ iostream
 vector
 -
 
+/home/segni/CLionProjects/emre -competitive/day - 3/test.cpp
+iostream
+-
+
+/home/segni/CLionProjects/emre -competitive/day - 4/sorting algorithms.cpp
+iostream
+-
+random
+-
+
 /home/segni/CLionProjects/emre -competitive/main.cpp
 day - 1/triangle stars.cpp
 /home/segni/CLionProjects/emre -competitive/day - 1/triangle stars.cpp
 day - 1/add long nums.cpp
 /home/segni/CLionProjects/emre -competitive/day - 1/add long nums.cpp
-day - 2/multiplication - long nums.cpp
-/home/segni/CLionProjects/emre -competitive/day - 2/multiplication - long nums.cpp
 day - 3/division large numbers.cpp
 /home/segni/CLionProjects/emre -competitive/day - 3/division large numbers.cpp
+day - 2/multiplication - long nums.cpp
+/home/segni/CLionProjects/emre -competitive/day - 2/multiplication - long nums.cpp
+day - 3/test.cpp
+/home/segni/CLionProjects/emre -competitive/day - 3/test.cpp
 day - 3/calculator.cpp
 /home/segni/CLionProjects/emre -competitive/day - 3/calculator.cpp
+day - 4/sorting algorithms.cpp
+/home/segni/CLionProjects/emre -competitive/day - 4/sorting algorithms.cpp
 
