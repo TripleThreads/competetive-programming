@@ -21,6 +21,8 @@ iostream
 -
 map
 -
+fstream
+-
 
 /home/segni/CLionProjects/emre -competitive/day - 3/calculator.cpp
 iostream

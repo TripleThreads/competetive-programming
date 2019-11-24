@@ -5,6 +5,7 @@
 
 #include <iostream>
 #include <map>
+#include <fstream>
 
 using namespace std;
 
@@ -50,7 +51,7 @@ vector<int> add_mul(const vector<int>& num_1, const string &num_2) {
 vector<string> multiply(const string &num_1, const string &num_2) {
 
     vector<string> total;
-    map<string, string> mul_table;
+    map<int, string> mul_table;
     int carry_on = 0;
 
     for (int index_num = num_1.length() - 1; index_num >= 0; index_num--) {
@@ -59,11 +60,8 @@ vector<string> multiply(const string &num_1, const string &num_2) {
         if (x == 0) continue;
 
         string padding;
-        string num2_cpy = num_2;
 
-        num2_cpy.append(to_string(x));
-
-        if (mul_table.find(num2_cpy) == mul_table.end()) {
+        if (mul_table.find(x) == mul_table.end()) {
 
             vector<int> temp;
 
@@ -89,16 +87,12 @@ vector<string> multiply(const string &num_1, const string &num_2) {
 
                 padding.append(to_string(temp[i]));
             }
-            mul_table[num2_cpy] = padding;
-
-            for (int a = 0; a < num_1.length() - index_num - 1; a++) {
-                padding.append("0");
-            }
+            mul_table[x] = padding;
         } else {
-            padding = mul_table[num2_cpy];
-            for (int a = 0; a < num_1.length() - index_num - 1; a++) {
-                padding.append("0");
-            }
+            padding = mul_table[x];
+        }
+        for (int a = 0; a < num_1.length() - index_num - 1; a++) {
+            padding.append("0");
         }
         total.push_back(padding);
     }
@@ -140,7 +134,13 @@ void mul_input(string num_1, string num_2) {
         cout << "-";
     }
 
-    for (int f: final)
+    ofstream output("mul output.txt");
+
+    for (int f: final) {
+        output << f;
         cout << f;
+    }
+    output << endl;
+    output.close();
     cout << endl;
 }
