@@ -2,9 +2,9 @@
 // Created by segni on 20/11/2019.
 //
 #include <iostream>
-#include <vector>
 
 using namespace std;
+
 // this function is a utility function that helps us to check if the string is zero ex. returns true for 0000 and  false if 0001
 bool is_zero(string &num_1) {
     for (char chr: num_1) {
@@ -13,24 +13,26 @@ bool is_zero(string &num_1) {
     }
     return true;
 }
+
 // this function returns increment size that is used to update quotient and appends 0's to denominator for fast division
 unsigned long long int get_inc_by(string &num_1, string &num_2) {
 
-    int len_diff = num_1.length() - num_2.length();
+    unsigned long long len_diff = num_1.length() - num_2.length();
 
-    unsigned long long int ten = 10;
+    unsigned long long ten = 10;
 
-    for (int i = 0; i < len_diff - 1; i++) {
+    for (unsigned long long i = 0; i < len_diff - 1; i++) {
         num_2.append("0");
     }
     return len_diff - 1 > 0 ? pow(ten, len_diff - 1) : 1;
 }
+
 // we are not really gonna divide num_1 by num_2 rather we subtract num_2 from num_1 until it is less than num_2
 unsigned long long int divide(string &num_1, string &num_2) {
 
-    vector<int> total;
+    string total;
 
-    string result, num2_original = num_2;
+    string num2_original = num_2;
 
     unsigned long long int quotient = 0;
 
@@ -45,17 +47,8 @@ unsigned long long int divide(string &num_1, string &num_2) {
     string num2_large = num_2;
 
     while (true) {
-
-        total = subs(num_1, num_2);
-
-        for (int a : total) {
-            result.append(to_string(a));
-        }
-        num_1 = result;
-        total.clear();
-        result = "";
+        num_1 = subs(num_1, num_2);
         quotient += inc_by;
-
         if (num_1.empty() || is_zero(num_1)) {
             num_1 = "";
             break;
