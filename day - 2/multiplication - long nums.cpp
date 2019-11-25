@@ -12,10 +12,12 @@ using namespace std;
 /**
  * @method multiply takes two numbers and multiply them returns in vector<string>
  * */
-vector<string> multiply(const string &num_1, const string &num_2) {
+string multiply(const string &num_1, const string &num_2) {
 
     vector<string> total;
     map<int, string> mul_table;
+
+    string sum = "0";
 
     for (int index_num = num_1.length() - 1; index_num >= 0; index_num--) {
         int x = num_1.at(index_num) - 48;
@@ -47,12 +49,11 @@ vector<string> multiply(const string &num_1, const string &num_2) {
         } else {
             temp = mul_table[x];
         }
-        for (int a = 0; a < num_1.length() - index_num - 1; a++) {
-            temp.append("0");
-        }
-        total.push_back(temp);
+        string zeros(num_1.length() - index_num - 1, '0');
+        temp.append(zeros);
+        sum = add(sum, temp);
     }
-    return total;
+    return sum;
 }
 
 /**
@@ -76,19 +77,15 @@ void mul_input(string num_1, string num_2) {
         num_2 = num_2.substr(1, num_2.length());
     }
 
-    vector<string> total = multiply(num_2, num_1);
+    string total = multiply(num_2, num_1);
 
     ofstream output("mul output.txt");
-    string sum = "0";
 
-    for (const string &num: total) {
-        sum = add(sum, num);
-    }
-    if (print_negative && sum.at(0) != '0') {
+    if (print_negative && total.at(0) != '0') {
         cout << "-";
         output << "-";
     }
-    output << sum << endl;
+    output << total << endl;
     output.close();
-    cout << sum << endl;
+    cout << total << endl;
 }

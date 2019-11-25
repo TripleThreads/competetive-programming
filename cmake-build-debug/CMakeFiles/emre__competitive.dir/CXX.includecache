@@ -31,11 +31,11 @@ iostream
 /home/segni/CLionProjects/emre -competitive/day - 3/division large numbers.cpp
 iostream
 -
-vector
--
 
 /home/segni/CLionProjects/emre -competitive/day - 3/test.cpp
 iostream
+-
+bits/stdc++.h
 -
 
 /home/segni/CLionProjects/emre -competitive/day - 4/sorting algorithms.cpp
