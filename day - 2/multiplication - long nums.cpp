@@ -19,7 +19,10 @@ string multiply(const string &num_1, const string &num_2) {
 
     string sum = "0";
 
-    for (int index_num = num_1.length() - 1; index_num >= 0; index_num--) {
+    int num1_len = num_1.length();
+    int num2_len = num_2.length();
+
+    for (int index_num = num1_len - 1; index_num >= 0; index_num--) {
         int x = num_1.at(index_num) - 48;
 
         if (x == 0) continue;
@@ -30,7 +33,7 @@ string multiply(const string &num_1, const string &num_2) {
 
             int carry_on = 0;
 
-            for (int index = num_2.length() - 1; index >= 0; index--) {
+            for (int index = num2_len - 1; index >= 0; index--) {
 
                 int y = num_2.at(index) - 48;
 
@@ -39,17 +42,17 @@ string multiply(const string &num_1, const string &num_2) {
                 carry_on = z / 10;
 
                 temp.push_back((z % 10) + '0');
-
-                if (index == 0 && carry_on != 0) {
-                    temp.push_back(carry_on + '0');
-                }
             }
+            if (carry_on != 0)
+                temp.push_back(carry_on + '0');
+
             reverse(temp.begin(), temp.end());
             mul_table[x] = temp;
         } else {
             temp = mul_table[x];
         }
         string zeros(num_1.length() - index_num - 1, '0');
+
         temp.append(zeros);
         sum = add(sum, temp);
     }
@@ -59,7 +62,7 @@ string multiply(const string &num_1, const string &num_2) {
 /**
  * @method input takes input from user and polishes it
  * */
-void mul_input(string num_1, string num_2) {
+void mul_input(string &num_1, string &num_2) {
 
     bool print_negative = false;
 

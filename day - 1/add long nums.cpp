@@ -8,11 +8,10 @@ using namespace std;
  * */
 string add(const string &num_1, const string &num_2) {
 
-    int max_iter = max(num_1.size(), num_2.length());
-
     int num_1_index = num_1.size() - 1;
+    int num_2_index = num_2.size() - 1;
 
-    int num_2_index = num_2.length() - 1;
+    int max_iter = max(num_1_index, num_2_index);
 
     string total;
 
@@ -27,13 +26,11 @@ string add(const string &num_1, const string &num_2) {
         carry_on = z / 10;
 
         total.push_back(z % 10 + '0');
-
-        if (index == 0 && carry_on != 0)
-            total.push_back(carry_on + '0');
-
     }
-    reverse(total.begin(), total.end());
+    if (carry_on != 0)
+        total.push_back(carry_on + '0');
 
+    reverse(total.begin(), total.end());
     return total;
 }
 
