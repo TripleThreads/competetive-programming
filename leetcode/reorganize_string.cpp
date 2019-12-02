@@ -1,59 +1,34 @@
 class Solution {
 public:
-    // check if the count is empty that means all the characters are inserted
-    bool is_empty(int array[]) {
-        for (int i = 0; i < 26; i++) {
-            if (array[i] != 0)
-                return false;
-        }
-        return true;
-    }
-    // find the most repeated letter without last inserted one
-    int _max(int array[], int ex_ix) {
-
-        int max = ex_ix;
-
-        for (int a = 0; a < 26; a++) {
-
-            if (a == ex_ix) continue;
-
-            if (max == ex_ix || array[a] > array[max]) {
-                max = a;
-            }
-
-        }
-        return max;
-    }
 
     string reorganizeString(string S) {
 
         string result = "";
 
         int count[26] = {0}; // count of our alphabets in their index
+        int maxCount = 0;
+        int maxValue = 0;
 
         for (char c : S) {
             count[c - 97]++;
+            if (count[c - 97] > maxCount) {
+                maxCount = count[c - 97];
+                maxValue = c;
+            }
         }
-        // if the character is already inserted to final we will exclude it from next max repeated
-        int exclude_ix = 26;
-
+        if (S.length() - maxCount <  maxCount) return "";
+        vector<int> sub_list[maxCount];
+        int index = 0;
+        for (char c: S) {
+            if (c == maxValue) continue;
+            while (count[c - 97]-- > 0) {
+                sub_list[(index++) % maxCount].push_back(c - 97);
+            }
+        }
         for (int i = 0; i < S.length(); i++) {
-
-            int max = _max(count, exclude_ix);
-
-            if (count[max] == 0) break;
-
-            result.push_back(97 + max);
-
-            count[max]--;
-
-            exclude_ix = max;
+            result.push_back(maxValue);
+            result.insert(result.end(), sub_list[i].begin(), sub_list[i].end());
         }
-
-        if (is_empty(count)) {
-            return result;
-        }
-
-        return "";
+        return result;
     }
 };
