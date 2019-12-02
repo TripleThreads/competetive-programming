@@ -43,6 +43,12 @@ iostream
 -
 random
 -
+cmath
+-
+vector
+-
+
+/home/segni/CLionProjects/emre -competitive/day - 5/prefix_calculator.cpp
 
 /home/segni/CLionProjects/emre -competitive/main.cpp
 day - 1/triangle stars.cpp
@@ -59,4 +65,6 @@ day - 3/calculator.cpp
 /home/segni/CLionProjects/emre -competitive/day - 3/calculator.cpp
 day - 4/sorting algorithms.cpp
 /home/segni/CLionProjects/emre -competitive/day - 4/sorting algorithms.cpp
+day - 5/prefix_calculator.cpp
+/home/segni/CLionProjects/emre -competitive/day - 5/prefix_calculator.cpp
 
