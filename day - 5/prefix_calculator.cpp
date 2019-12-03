@@ -52,7 +52,6 @@ void prefix_cal() {
     cout << "Enter prefix expression " << endl;
     getline(cin, input);
 
-
     vector<string> results = split(input);
     int result_size = results.size();
 

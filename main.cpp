@@ -9,6 +9,7 @@
 #include "day - 3/calculator.cpp"
 #include "day - 4/sorting algorithms.cpp"
 #include "day - 5/prefix_calculator.cpp"
+#include "day - 5/postfix_calculator.cpp"
 using namespace std;
 
 int main () {
@@ -19,7 +20,7 @@ int main () {
 //    auto final = chrono::high_resolution_clock::now();
 //    auto duration = chrono::duration_cast<std::chrono::milliseconds>(final - initial ).count();
 //    cout << duration << endl;
-    prefix_cal();
+    postfix_calculator();
 
     return 0;
 }
