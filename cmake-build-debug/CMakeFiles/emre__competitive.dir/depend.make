@@ -8,6 +8,8 @@ CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 3/calculator.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 3/division\ large\ numbers.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 3/test.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 4/sorting\ algorithms.cpp
+CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 5/postfix_calculator.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 5/prefix_calculator.cpp
+CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 6/queue_using_stack.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../main.cpp
 
