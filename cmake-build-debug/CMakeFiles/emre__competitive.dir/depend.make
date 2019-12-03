@@ -11,5 +11,6 @@ CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 4/sorting\ algorithms.cp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 5/postfix_calculator.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 5/prefix_calculator.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 6/queue_using_stack.cpp
+CMakeFiles/emre__competitive.dir/main.cpp.o: ../day\ -\ 6/stack_using_queue.cpp
 CMakeFiles/emre__competitive.dir/main.cpp.o: ../main.cpp
 
