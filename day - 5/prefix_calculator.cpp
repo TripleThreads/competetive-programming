@@ -1,68 +1,94 @@
 //
 // Created by segni on 28/11/2019.
 //
-#define MAX 1000
 
 class Stack {
-    int top;
+private:
+    vector<int> data;
+public:
 
 public:
-    int size;
-    int mem[MAX];
-public:
     Stack() {
-        top = -1;
     }
 
     bool push(int num) {
-        if (top > MAX) {
-            cout << "Stack overflow" << endl;
-            return false;
-        }
-        this->mem[++top] = num;
+        data.push_back(num);
         cout << "Pushed to stack" << endl;
         return true;
     }
 
     int pop() {
-        if (top < 0) {
-            cout << "Stack underflow " << endl;
-            return 0;
-        }
-        return this->mem[top--];
+        int value = data[data.size() - 1];
+        data.pop_back();
+        return value;
     }
 
     int peek() {
-        if (top < 0) {
-            cout << "stack is empty" << endl;
-            return 0;
-        }
-        return this->mem[top];
+        return data[data.size() - 1];
+    }
+
+    int empty() {
+        return data.size() == 0;
     }
 
 };
 
-vector<string> split(string str, char delimiter) {
+vector<string> split(const string& str) {
 
-    vector<string> internal;
-    stringstream ss(str); // Turn the string into a stream.
-    string tok;
+    string word;
 
-    while(getline(ss, tok, delimiter)) {
-        internal.push_back(tok);
+    istringstream iss(str, istringstream::in);
+    vector<string> word_list;
+
+    while (iss >> word) {
+        word_list.push_back(word);
     }
-
-    return internal;
+    return word_list;
 }
 
 void prefix_cal() {
     class Stack stack;
     string input;
     cout << "Enter prefix expression " << endl;
-    cin >> input;
+    getline(cin, input);
 
-    std::vector<std::string> results = split(input, ' ');
-    for (const string& result : results) {
-        cout << result << endl;
+
+    vector<string> results = split(input);
+    int result_size = results.size();
+
+    unordered_set<char> operations = {'+', '-', '/', '*',};
+
+    for (int i = result_size - 1; i >= 0; i--) {
+        char operation = results[i][0];
+
+        if (operations.find(operation) == operations.end()) {
+            stack.push(stoi(results[i]));
+
+        } else {
+            int x = stack.pop();
+            int y = stack.pop();
+            int result = 0;
+
+            switch (operation) {
+                case '+':
+                    result = x + y;
+                    break;
+
+                case '-':
+                    result = x - y;
+                    break;
+
+                case '*':
+                    result = x * y;
+                    cout << "mul res " << result << endl;
+                    break;
+
+                case '/':
+                    result = x / y;
+                    break;
+            }
+            stack.push(result);
+        }
     }
+    cout << "result is " << stack.pop() << endl;
 }
