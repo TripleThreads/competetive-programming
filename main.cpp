@@ -12,6 +12,7 @@
 #include "day - 5/postfix_calculator.cpp"
 #include "day - 6/queue_using_stack.cpp"
 #include "day - 6/stack_using_queue.cpp"
+#include "leetcode/linked list/design linked list.cpp"
 using namespace std;
 
 int main () {
@@ -22,7 +23,7 @@ int main () {
 //    auto final = chrono::high_resolution_clock::now();
 //    auto duration = chrono::duration_cast<std::chrono::milliseconds>(final - initial ).count();
 //    cout << duration << endl;
-    stack_using_queue();
+    linkedListDesign();
 
     return 0;
 }
