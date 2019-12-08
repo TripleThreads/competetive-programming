@@ -8,62 +8,49 @@
 
 using namespace std;
 
-vector<int> split_string(const string &input) {
-    string num;
-    istringstream iss(input, istringstream::in);
-    vector<int> res;
-    while (iss >> num) {
-        res.push_back(stoi(num));
-    }
-
-    return res;
-}
-
 string beautiful_regional_contest() {
     int size;
-    string user_input, result;
+    string result;
 
     cin >> size;
-    getline(cin >> ws, user_input);
 
-    if (size < 10) return "0 0 0";
-
-    vector<int> array = split_string(user_input);
+    int input[size];
     int mid = size / 2;
-    vector<int> gold;
-    vector<int> silver;
-    vector<int> bronze;
 
-    int gold_c = 0;
-    int silver_c = 0;
-    int bronze_c = 0;
+    for (int i = 0; i < size; i++) {
+        cin >> input[i];
+    }
+    if (size < 10 || input[0] == input[mid]) return "0 0 0";
+
+    unsigned int gold, silver;
+
+    int gold_c = 0, silver_c = 0, bronze_c = 0;
 
     int mid_b = mid;
-    while (array[mid_b] == array[mid - 1]) {
+    while (input[mid_b] == input[mid - 1]) {
         mid--;
     }
-
-    int max_gold_count = mid / 3;
-    if (max_gold_count != 1) {
-        max_gold_count--;
-    }
-    for (int i = 0; i < max_gold_count; i++) {
-        if (array[i] > array[max_gold_count]) {
+    // count gold
+    int max_num = input[0];
+    for (int i = 0; i < mid; i++) {
+        if (input[i] == max_num) {
             gold_c++;
-            gold.push_back(array[i]);
+            gold = input[i];
         }
     }
-    for (int i = gold_c; i < (mid - max_gold_count); i++) {
-        if (gold_c > 0 && array[i] < gold[gold_c - 1] && array[i] > array[mid - gold_c - 1]) {
+    // count silver
+    for (int i = gold_c; i < (mid - (gold_c + 1)); i++) {
+        if (input[i] == input[mid]) return "0 0 0";
+        if (gold_c > 0 && input[i] <= gold && input[i] > input[mid - gold_c - 1]) {
             silver_c++;
-            silver.push_back(array[i]);
+            silver = input[i];
         }
     }
-
+    // count bronze
     for (int i = gold_c + silver_c; i < mid; i++) {
-        if (silver_c > 0 && silver[silver_c - 1] > array[i]) {
+        if (input[i] == input[mid]) return "0 0 0";
+        if (silver_c > 0 && input[i] <= silver) {
             bronze_c++;
-            bronze.push_back(array[i]);
         }
     }
     if (gold_c < silver_c && gold_c < bronze_c)
@@ -76,11 +63,7 @@ string beautiful_regional_contest() {
 int main() {
     int size;
     cin >> size;
-    vector<string> results;
     for (int i = 0; i < size; i++) {
-        results.push_back(beautiful_regional_contest());
-    }
-    for (string s: results) {
-        cout << s << endl;
+        cout << beautiful_regional_contest() << endl;
     }
 }

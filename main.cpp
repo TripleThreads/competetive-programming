@@ -1,69 +1,30 @@
 //
-// Created by segni on 08/12/2019.
+// Created by segni on 19/11/2019.
 //
-#include <iostream>
-#include <vector>
-#include <sstream>
-#include <string>
-
+#include "day - 1/triangle stars.cpp"
+#include "day - 1/add long nums.cpp"
+#include "day - 3/division large numbers.cpp"
+#include "day - 2/multiplication - long nums.cpp"
+#include "day - 3/test.cpp"
+#include "day - 3/calculator.cpp"
+#include "day - 4/sorting algorithms.cpp"
+#include "day - 5/prefix_calculator.cpp"
+#include "day - 5/postfix_calculator.cpp"
+#include "day - 6/queue_using_stack.cpp"
+#include "day - 6/stack_using_queue.cpp"
+#include "leetcode/linked list/design linked list.cpp"
 using namespace std;
 
-string beautiful_regional_contest() {
-    int size;
-    string result;
+int main () {
+    // test big integers
 
-    cin >> size;
+//    auto initial = chrono::high_resolution_clock::now();
+//    test();
+//    auto final = chrono::high_resolution_clock::now();
+//    auto duration = chrono::duration_cast<std::chrono::milliseconds>(final - initial ).count();
+//    cout << duration << endl;
+    stack_using_queue();
+    linkedListDesign();
 
-    int input[size];
-    int mid = size / 2;
-
-    for (int i = 0; i < size; i++) {
-        cin >> input[i];
-    }
-    if (size < 10 || input[0] == input[mid]) return "0 0 0";
-
-    unsigned int gold, silver;
-
-    int gold_c = 0, silver_c = 0, bronze_c = 0;
-
-    int mid_b = mid;
-    while (input[mid_b] == input[mid - 1]) {
-        mid--;
-    }
-    // count gold
-    int max_num = input[0];
-    for (int i = 0; i < mid; i++) {
-        if (input[i] == max_num) {
-            gold_c++;
-            gold = input[i];
-        }
-    }
-    // count silver
-    for (int i = gold_c; i < (mid - (gold_c + 1)); i++) {
-        if (input[i] == input[mid]) return "0 0 0";
-        if (gold_c > 0 && input[i] <= gold && input[i] > input[mid - gold_c - 1]) {
-            silver_c++;
-            silver = input[i];
-        }
-    }
-    // count bronze
-    for (int i = gold_c + silver_c; i < mid; i++) {
-        if (input[i] == input[mid]) return "0 0 0";
-        if (silver_c > 0 && input[i] <= silver) {
-            bronze_c++;
-        }
-    }
-    if (gold_c < silver_c && gold_c < bronze_c)
-        result.append(to_string(gold_c) + " " + to_string(silver_c) + " " + to_string(bronze_c));
-    else
-        result = "0 0 0";
-    return result;
-}
-
-int main() {
-    int size;
-    cin >> size;
-    for (int i = 0; i < size; i++) {
-        cout << beautiful_regional_contest() << endl;
-    }
+    return 0;
 }
