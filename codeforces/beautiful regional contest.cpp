@@ -26,8 +26,8 @@ string beautiful_regional_contest() {
 
     int gold_c = 0, silver_c = 0, bronze_c = 0;
 
-    int mid_b = mid;
-    while (input[mid_b] == input[mid - 1]) {
+    int mid_item = input[mid];
+    while (mid_item == input[mid - 1]) {
         mid--;
     }
     // count gold
@@ -40,7 +40,6 @@ string beautiful_regional_contest() {
     }
     // count silver
     for (int i = gold_c; i < (mid - (gold_c + 1)); i++) {
-        if (input[i] == input[mid]) return "0 0 0";
         if (gold_c > 0 && input[i] <= gold && input[i] > input[mid - gold_c - 1]) {
             silver_c++;
             silver = input[i];
@@ -48,7 +47,6 @@ string beautiful_regional_contest() {
     }
     // count bronze
     for (int i = gold_c + silver_c; i < mid; i++) {
-        if (input[i] == input[mid]) return "0 0 0";
         if (silver_c > 0 && input[i] <= silver) {
             bronze_c++;
         }

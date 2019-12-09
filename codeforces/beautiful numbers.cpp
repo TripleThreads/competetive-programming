@@ -8,29 +8,15 @@
 
 using namespace std;
 
-vector<int> split(const string &str, int size) {
-
-    string num;
-
-    istringstream iss(str, istringstream::in);
-    vector<int> position(size, 0);
-
-    int i = 0;
-    while (iss >> num) {
-        position[stoi(num) - 1] = i;
-        i++;
-    }
-    return position;
-}
-
 string beautiful_numbers() {
-    int size;
-    string user_input;
+    int size, input;
     string result = "";
     cin >> size;
-    std::getline(std::cin >> std::ws, user_input);
-
-    vector<int> position = split(user_input, size);
+    int position[size];
+    for (int i = 0; i < size; i++) {
+        cin >> input;
+        position[input - 1] = i;
+    }
 
     int min = size + 1;
     int max = -1;
