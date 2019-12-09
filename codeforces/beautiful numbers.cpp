@@ -39,11 +39,7 @@ string beautiful_numbers() {
 int main() {
     int size;
     cin >> size;
-    vector<string> results;
     for (int i = 0; i < size; i++) {
-        results.push_back(beautiful_numbers());
-    }
-    for (string s: results) {
-        cout << s << endl;
+        cout << beautiful_numbers() << endl;
     }
 }
