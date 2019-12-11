@@ -50,9 +50,7 @@ int main() {
         if (index == fast || count[fast] == 0) {
             fast++;
         }
-        cout << count[index] << " " << count[fast] << endl;
     }
     cout << "YES" << endl;
     cout << beautiful_s << endl;
 }
-    
