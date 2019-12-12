@@ -12,12 +12,14 @@ public:
 
         if (!root) return {};
 
-        stack<TreeNode *> nodes, lefties;
+        stack<TreeNode *> lefties;
+        vector<int> result;
 
-        nodes.push(root);
+        result.push_back(root->val);
         lefties.push(root->left);
 
         root = root->right;
+
         while (!lefties.empty() || root) {
 
             if (!root) {
@@ -25,18 +27,14 @@ public:
                 lefties.pop();
             }
             if (!root) continue;
+
             if (root->left)
                 lefties.push(root->left);
 
-            nodes.push(root);
+            result.push_back(root->val);
             root = root->right;
         }
-        vector<int> result;
-
-        while (!nodes.empty()) {
-            result.push_back(nodes.top()->val);
-            nodes.pop();
-        }
+        reverse(result.begin(), result.end());
         return result;
     }
 };
