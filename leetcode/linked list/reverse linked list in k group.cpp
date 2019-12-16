@@ -25,9 +25,7 @@ public:
         
         ListNode *newHead = nullptr, *prevTail = nullptr;
         ListNode *node = head, *tail = head;
-        
-        int j = 0;
-        
+
         while (size / k >= 1) {
             
             for (int i = 0; i < k - 1; i++) {
