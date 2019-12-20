@@ -7,8 +7,6 @@
 #IncludeRegexTransform: 
 
 /home/segni/CLionProjects/emre -competitive/main.cpp
-iostream
--
-set
+bits/stdc++.h
 -
 
