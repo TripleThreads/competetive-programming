@@ -25,7 +25,7 @@ public:
             if (citations[mid] > h_index)
                 right = mid;
 
-            else if (c_size - mid > h_index)
+            else if (rightSize > h_index)
                 left = mid + 1;
 
             if (mid == 0 || cite >= rightSize && cite >= citations[mid - 1])
