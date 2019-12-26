@@ -1,3 +1,4 @@
+
 //
 // Created by segni on 21/12/2019.
 //
@@ -28,7 +29,7 @@ public:
             else if (rightSize > h_index)
                 left = mid + 1;
 
-            if (mid == 0 || cite >= rightSize && cite >= citations[mid - 1])
+            if (mid == 0 || h_index >= rightSize && h_index >= citations[mid - 1])
                 return h_index;
 
         }
