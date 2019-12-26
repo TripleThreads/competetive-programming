@@ -4,7 +4,7 @@
 
 using namespace std;
 
-void heapify_down(int array[], int size, int parent) {
+int heapify_min_down(int array[], int size, int parent) {
     int smallest = parent;
     int left = 2 * parent + 1;
     int right = 2 * parent + 2;
@@ -17,8 +17,9 @@ void heapify_down(int array[], int size, int parent) {
 
     if (smallest != parent) {
         swap(array[parent], array[smallest]);
-        heapify_down(array, size, smallest);
+        heapify_min_down(array, size, smallest);
     }
+    return smallest;
 }
 
 void build_min_heap(int array[], int size) {
@@ -26,7 +27,7 @@ void build_min_heap(int array[], int size) {
     int nonLeaf = (size / 2) - 1;
 
     for (int i = nonLeaf; i >= 0; i--) {
-        heapify_down(array, size, i);
+        heapify_min_down(array, size, i);
     }
 
 }

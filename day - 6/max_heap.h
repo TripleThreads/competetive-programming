@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int heapify(int array[], int size, int parent) {
+int heapify_max_down(int *array, int size, int parent) {
     int largest = parent;
     int left = 2 * parent + 1;
     int right = 2 * parent + 2;
@@ -19,7 +19,7 @@ int heapify(int array[], int size, int parent) {
 
     if (largest != parent) {
         swap(array[parent], array[largest]);
-        heapify(array, size, largest);
+        heapify_max_down(array, size, largest);
     }
 
     return parent;
@@ -27,11 +27,11 @@ int heapify(int array[], int size, int parent) {
 void insert_to_heap(int array[], int &size, int key) {
     array[size - 1] = key;
     int parent = ceil((double) size / 2) - 1;
-    int current = heapify(array, size, parent);
+    int current = heapify_max_down(array, size, parent);
 
     parent = ceil((double)current / 2) - 1;
     while (parent >= 0 && array[parent] < array[current]) {
-        heapify(array, size, parent);
+        heapify_max_down(array, size, parent);
         current = parent;
         parent = ceil((double)parent / 2) - 1;
     }
@@ -40,6 +40,6 @@ void build_heap(int array[], int n) {
     int startIx = (n / 2) - 1; // index of last non leaf node
 
     for (int i = startIx; i >= 0; i--) {
-        heapify(array, n, i);
+        heapify_max_down(array, n, i);
     }
 }

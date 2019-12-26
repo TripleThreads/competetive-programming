@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include "day - 6/min_heap.h"
 #include "day - 6/max_heap.h"
 
 using namespace std;
