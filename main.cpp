@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "day - 6/max_heap.h"
+#include "day - 6/min_heap.h"
 
 using namespace std;
 
@@ -20,14 +21,12 @@ void print_vector(vector<int> arr) {
 
 
 int main() {
-    int arr[12] = { 1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17 };
+    int arr[4] = {4, 5, 8, 2};
 
     int n = sizeof(arr) / sizeof(arr[0]);
     build_heap(arr, n);
 
-    print_array(arr, n);
 
-    insert_to_heap(arr, n, 20);
     print_array(arr, n);
 
     build_min_heap(arr, n);

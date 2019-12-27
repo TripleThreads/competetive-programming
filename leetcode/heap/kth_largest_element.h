@@ -1,6 +1,3 @@
-//
-// Created by segni on 26/12/2019.
-//
 class KthLargest {
 public:
     int size, maxSize;
@@ -26,20 +23,20 @@ public:
     KthLargest(int k, vector<int>& nums) {
         this->maxSize = k;
 
-        if (nums.size() > k) {
-            sort(nums.begin(), nums.end());
-
-            for (int i = nums.size() - k; i < nums.size(); i++)
-                array.push_back(nums[i]);
-        }
-        else
-            this->array = nums;
+        this->array = nums;
+        this->size = array.size();
 
         // last non leaf node;
-        int n = (nums.size() / 2) - 1, size = nums.size();
+        int n = (size / 2) - 1;
 
         for (int i = n; i >= 0; i--) {
             heapify_down(i);
+        }
+        while (size > k) { // delete until it is equal to k
+            swap(array[0], array[size - 1]);
+            size--;
+            heapify_down(0);
+            array.pop_back();
         }
     }
 
