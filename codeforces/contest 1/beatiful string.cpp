@@ -6,8 +6,7 @@
 using namespace std;
 
 int maxIndex(int exclude_prev, int exclude_next) {
-
-    int max = INT_MIN;
+    int max = -1;
     for (int i = 0; i < 3; i++) {
         if (exclude_prev == i || exclude_next == i) continue;
         return i;
@@ -24,7 +23,6 @@ string beautifulString() {
     if (S.length() == 0) {
         return result;
     }
-
     int ex_prev = 4;
     int it = 0;
     int exl_next = 4;
@@ -41,7 +39,7 @@ string beautifulString() {
             if (it > 0 && c == S.at(it - 1)) return "-1";
         } else {
             int max_ix = maxIndex(ex_prev, exl_next);
-            if (max_ix == INT_MIN) return "-1";
+            if (max_ix == -1) return "-1";
             result.push_back(max_ix + 97);
 
             ex_prev = max_ix;
@@ -56,10 +54,7 @@ int main() {
     cin >> len;
     vector<string> result;
     for (int i = 0; i < len; i++) {
-        result.push_back(beautifulString());
+        cout << beautifulString() << endl;
     }
-    for (string s: result)
-        cout << s << endl;
-
     return 0;
 }
