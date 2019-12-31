@@ -11,9 +11,8 @@ using namespace std;
 
 int min_distance() {
 
-    int input[3];
-    int max = 0;
-    int min = 0;
+    int input[3], max = 0, min = 0;
+
     for (int i = 0; i < 3; i++) {
         cin >> input[i];
 
@@ -23,10 +22,9 @@ int min_distance() {
             max = i;
     }
     int mid = 0;
-    if (min == max) {
-        mid = max;
+    if (min == max)
         return 0;
-    } else {
+    else {
         for (int i = 0; i < 3; i++) {
             if (min != i && max != i)
                 mid = i;

@@ -42,7 +42,6 @@ long long int stackOfPresents() {
     return result;
 }
 
-
 int main () {
     int testCases;
 
