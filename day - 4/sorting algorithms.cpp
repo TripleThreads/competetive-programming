@@ -127,7 +127,7 @@ void merge_sort(int array[], int size) {
         }
     }
 }
-
+// count sorting 
 void count_sorting(int array[], int range) {
     int count_array[10] = {0};
 
@@ -176,7 +176,7 @@ void radix_count_sort(int array[], int exp, int size) {
     }
 
 }
-
+// radix sorting
 void radix_sorting(int array[], int size) {
 
     int max_d = max_digit(array, size);
@@ -184,34 +184,4 @@ void radix_sorting(int array[], int size) {
     for (int exp = 0; exp < max_d; exp++) {
         radix_count_sort(array, exp, size);
     }
-}
-
-vector<int> relativeSortArray(vector<int>& arr1, vector<int>& arr2) {
-    int count_array[1001] = {0};
-    int count_array2[1001] = {0};
-    vector<int> ar;
-
-    for (int i = 0; i < arr1.size(); i++) {
-        count_array[arr1[i]]++;
-    }
-
-    for (int i = 0; i < arr2.size(); i++) {
-        count_array2[arr2[i]]++;
-    }
-
-    int a_ix = 0;
-
-    for (int i : arr2) {
-        for (int j = 0; j < count_array[i]; j++) {
-            ar.push_back(i);
-        }
-        count_array[i] = 0;
-    }
-    for (int i = 0; i < 1001; i++) {
-        for (int j = 0; j < count_array[i]; j++) {
-            ar.push_back(i);
-        }
-    }
-    return ar;
-
 }
