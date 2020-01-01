@@ -6,7 +6,21 @@
 
 #IncludeRegexTransform: 
 
+/home/segni/CLionProjects/emre -competitive/day - 6/max_heap.h
+iostream
+-
+cmath
+-
+
+/home/segni/CLionProjects/emre -competitive/day - 6/min_heap.h
+
 /home/segni/CLionProjects/emre -competitive/main.cpp
 iostream
 -
+vector
+-
+day - 6/max_heap.h
+/home/segni/CLionProjects/emre -competitive/day - 6/max_heap.h
+day - 6/min_heap.h
+/home/segni/CLionProjects/emre -competitive/day - 6/min_heap.h
 
