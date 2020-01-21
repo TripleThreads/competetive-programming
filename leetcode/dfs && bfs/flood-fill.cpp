@@ -1,6 +1,3 @@
-//
-// Created by segni on 17/01/2020.
-//
 struct pair_hash {
     inline size_t operator()(const pair<int,int> & pr) const {
         return pr.first * 31 + pr.second;
@@ -15,6 +12,7 @@ public:
         // bfs
         que.push(make_pair(sr, sc));
         int color = image[sr][sc], n = image.size(), m = image[0].size();
+        int dir[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
         while (!que.empty()) {
             auto pr = que.front();
             que.pop();
@@ -26,17 +24,13 @@ public:
 
             visited.insert(pr);
 
-            if (pr.first + 1 < n && image[pr.first + 1][pr.second] == color)
-                que.push(make_pair(pr.first + 1, pr.second));
-
-            if (pr.first > 0 && image[pr.first - 1][pr.second] == color)
-                que.push(make_pair(pr.first - 1, pr.second));
-
-            if (pr.second + 1 < m && image[pr.first][pr.second + 1] == color)
-                que.push(make_pair(pr.first, pr.second + 1));
-
-            if (pr.second > 0 && image[pr.first][pr.second - 1] == color)
-                que.push(make_pair(pr.first, pr.second - 1));
+            for (auto d : dir) {
+                int x = pr.first + d[0];
+                int y = pr.second + d[1];
+                if (x < 0 || y < 0 || x >= n || y >= m || image[x][y] != color)
+                    continue;
+                que.push({x, y});
+            }
         }
 
         return image;
