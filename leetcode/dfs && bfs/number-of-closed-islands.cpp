@@ -43,13 +43,10 @@ public:
                     int x = pr.first + d[0];
                     int y = pr.second + d[1];
 
-                    if (x < 0 || y < 0 || x >= n || y >= m)
-                        continue;
-
                     if ((x == 0 || y == 0 || x == n - 1 || y == m - 1) && grid[x][y] == 0)
                         closed = false;
 
-                    if (grid[x][y] == 0 && visited.find({x, y}) == visited.end()) {
+                    else if (grid[x][y] == 0 && visited.find({x, y}) == visited.end()) {
                         sub.push({x, y});
                     }
                 }
