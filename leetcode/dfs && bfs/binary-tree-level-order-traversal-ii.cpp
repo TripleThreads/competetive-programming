@@ -1,45 +1,29 @@
-//
-// Created by segni on 02/02/2020.
-//
-
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
 class Solution {
 public:
-    vector<string> watchedVideosByFriends(vector<vector<string>>& watchedVideos, vector<vector<int>>& friends, int id, int level) {
-        bool visited[friends.size()] = {false};
-        visited[id] = true;
-        vector<int> frnds;
-        frnds.push_back(id);
-
-        while (level--) {
-            vector<int> newfrnds;
-            for (int f : frnds) {
-                for (int i : friends[f]) {
-                    if (!visited[i]) {
-                        visited[i] = true;
-                        newfrnds.push_back(i);
-                    }
-                }
-            }
-            frnds = newfrnds;
-        }
-        vector<string> result, temp;
-        map<string, int> freq;
-        for (int i : frnds)
-            for (string s : watchedVideos[i])
-                temp.push_back(s);
-
-        priority_queue<pair<int, string>, vector<pair<int, string>>, greater<pair<int, string>>> pque;
-        sort(temp.begin(), temp.end());
-        for (string s: temp)
-            freq[s]++;
-        for (auto [k, v] : freq)
-            pque.push({v, k});
-
-        while (!pque.empty()) {
-            auto [f, str] = pque.top();
-            result.push_back(str);
-            pque.pop();
-        }
+    int size = 0;
+    int depth(TreeNode* root, int dp) {
+        return !root ? dp : max(depth(root->left, dp + 1), depth(root->right, dp + 1));
+    }
+    void dfs(TreeNode *root, int dp, vector<vector<int>> &result) {
+        if (!root) return;
+        result[size - dp].push_back(root->val);
+        dfs(root->left, dp + 1, result);
+        dfs(root->right, dp + 1, result);
+    }
+    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+        if (!root) return {};
+        size = depth(root, 0) - 1;
+        vector<vector<int>> result(size + 1);
+        dfs(root, 0, result);
         return result;
     }
 };
