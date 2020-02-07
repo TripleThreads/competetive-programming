@@ -46,11 +46,11 @@ public:
     vector<int> getAllElements(TreeNode* root1, TreeNode* root2) {
         vector<int> nums, r1, r2;
         // inorder traversal
-        r1 = getElements(root1);
-        r2 = getElements(root2);
+        r1 = inOrderTraversal(root1);
+        r2 = inOrderTraversal(root2);
 
         int i = 0, j = 0;
-
+        // merge
         while (i < r1.size() && j < r2.size()) {
             if (r1[i] < r2[j])
                 nums.push_back(r1[i++]);
