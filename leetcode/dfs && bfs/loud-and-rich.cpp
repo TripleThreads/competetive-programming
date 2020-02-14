@@ -4,7 +4,7 @@
 
 class Solution {
 public:
-    int dfs(int index, vector<int>& quiet, unordered_map<int, vector<int>> &adj, vector<int> &memo) {
+    int dfs(int index, vector<int>& quiet, vector<vector<int>> &adj, vector<int> &memo) {
         if (memo[index] >= 0)
             return memo[index];
 
@@ -18,7 +18,7 @@ public:
     }
 
     vector<int> loudAndRich(vector<vector<int>>& richer, vector<int>& quiet) {
-        unordered_map<int, vector<int>> adj;
+        vector<vector<int>> adj(quiet.size());
         for (auto v : richer)
             adj[v[1]].push_back(v[0]);
 
