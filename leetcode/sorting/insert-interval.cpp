@@ -12,21 +12,19 @@ public:
         if (intervals.empty())
             return {newInterval};
 
-        int start = newInterval[0];
-        int end = newInterval[1];
         int n = intervals.size();
         vector<vector<int>> all, res;
 
         // divide and conquer
-        if (start >= intervals[n - 1][0]) {
+        if (newInterval[0] >= intervals[n - 1][0]) {
             all.insert(all.end(), intervals.begin(), intervals.end());
-            all.push_back({start, end});
+            all.push_back({newInterval[0], newInterval[1]});
         }
         else {
             for (auto &inter : intervals) {
-                if (start < inter[0]) {
-                    all.push_back({start, end});
-                    start = INT_MAX;
+                if (newInterval[0] < inter[0]) {
+                    all.push_back({newInterval[0], newInterval[1]});
+                    newInterval[0] = INT_MAX;
                 }
                 all.push_back(inter);
             }
