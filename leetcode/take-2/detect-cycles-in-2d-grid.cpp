@@ -1,9 +1,9 @@
 class Solution {
 public:
     bool cycle = false;
-    void dfs(vector<vector<char>>& grid, int sx, int sy, int px, int py, int cx, int cy, bool first, vector<vector<int>> &dirs) {
+    void dfs(vector<vector<char>>& grid, int px, int py, int cx, int cy, bool first, vector<vector<int>> &dirs) {
         if (cx < 0 || cy < 0 || cx == grid.size() || cy == grid[0].size()) return;
-        if (!first && (cx == sx && cy == sy || isupper(grid[cx][cy]))) {
+        if (!first && isupper(grid[cx][cy])) {
             cycle = true;
             return;
         }
@@ -14,7 +14,7 @@ public:
             int j = d[1] + cy;
             if (i >= 0 && i < grid.size() && j >= 0 && j < grid[0].size()) {
                 if (toupper(grid[i][j])  == grid[cx][cy] && !(i == px && j == py))
-                    dfs(grid, sx, sy, cx, cy, i, j, false, dirs);
+                    dfs(grid, cx, cy, i, j, false, dirs);
             }
         }
     }
@@ -23,7 +23,7 @@ public:
         for (int i = 0; i < grid.size(); i++) {
             for (int j = 0; j < grid[0].size(); j++) {
                 if(!cycle)
-                    dfs(grid, i, j, -1, -1, i, j, true, dirs);
+                    dfs(grid, -1, -1, i, j, true, dirs);
                 else
                     return true;
             }
