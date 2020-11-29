@@ -1,4 +1,4 @@
-# Install script for directory: /home/segni/CLionProjects/emre -competitive
+# Install script for directory: /home/segni/CLionProjects/competetive-programming
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/segni/CLionProjects/emre -competitive/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/segni/CLionProjects/competetive-programming/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

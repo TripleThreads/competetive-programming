@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/segni/CLionProjects/emre -competitive/main.cpp" "/home/segni/CLionProjects/emre -competitive/cmake-build-debug/CMakeFiles/emre__competitive.dir/main.cpp.o"
+  "/home/segni/CLionProjects/competetive-programming/leetcode/dfs && bfs/all-nodes-distance-k-binary-tree.cpp" "/home/segni/CLionProjects/competetive-programming/cmake-build-debug/CMakeFiles/emre__competitive.dir/leetcode/dfs_&&_bfs/all-nodes-distance-k-binary-tree.cpp.o"
+  "/home/segni/CLionProjects/competetive-programming/main.cpp" "/home/segni/CLionProjects/competetive-programming/cmake-build-debug/CMakeFiles/emre__competitive.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
